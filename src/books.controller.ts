@@ -8,30 +8,30 @@ import {
   Post
 } from "@nestjs/common";
 
-import { Product } from "./product.model";
-import { ProductsService } from "./products.service";
+import { Book } from "./book.model";
+import { BooksService } from "./books.service";
 
-@Controller("products")
-class ProductsController {
-  constructor(private productsService: ProductsService) {}
+@Controller("books")
+class BooksController {
+  constructor(private productsService: BooksService) {}
 
   @Get()
-  getAll(): Product[] {
+  getAll(): Book[] {
     return this.productsService.getAll();
   }
 
   @Get(":id")
-  getOne(@Param() params): Product {
+  getOne(@Param() params): Book {
     return this.productsService.getOne(params.id);
   }
 
   @Post()
-  create(@Body() product: Product): void {
+  create(@Body() product: Book): void {
     this.productsService.create(product);
   }
 
   @Patch(":id")
-  update(@Param() params, @Body() product: Product): Product {
+  update(@Param() params, @Body() product: Book): Book {
     return this.productsService.update(params.id, product);
   }
 
@@ -41,4 +41,4 @@ class ProductsController {
   }
 }
 
-export { ProductsController };
+export { BooksController };

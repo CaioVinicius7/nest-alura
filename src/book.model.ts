@@ -1,4 +1,4 @@
-class Product {
+class Book {
   id: string;
   code: string;
   name: string;
@@ -11,4 +11,4 @@ class Product {
   }
 }
 
-export { Product };
+export { Book };
