@@ -1,4 +1,5 @@
 import { Module } from "@nestjs/common";
+import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 
 import { AppController } from "./app.controller";
@@ -9,13 +10,14 @@ import { BooksService } from "./books.service";
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     SequelizeModule.forRoot({
       dialect: "postgres",
       host: "localhost",
-      port: 5432,
-      username: "docker",
-      password: "nestjs",
-      database: "books",
+      port: Number(process.env.DB_PORT),
+      username: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DEFAULT,
       autoLoadModels: true,
       synchronize: true
     }),
