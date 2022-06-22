@@ -5,9 +5,9 @@ import { Book } from "./book.model";
 @Injectable()
 class BooksService {
   products: Book[] = [
-    new Book("978-3-16-148410-0", "book 1", 29.9),
-    new Book("879-3-16-148410-0", "book 2", 29.9),
-    new Book("524-3-16-148410-0", "book 3", 29.9)
+    // new Book("978-3-16-148410-0", "book 1", 29.9),
+    // new Book("879-3-16-148410-0", "book 2", 29.9),
+    // new Book("524-3-16-148410-0", "book 3", 29.9)
   ];
 
   getAll(): Book[] {
