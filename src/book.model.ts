@@ -1,14 +1,12 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 import { v4 as uuidV4 } from "uuid";
-
 @Table
 class Book extends Model<Book> {
   @Column({
-    type: DataType.STRING,
-    primaryKey: true,
-    defaultValue: uuidV4()
+    type: DataType.UUIDV4,
+    primaryKey: true
   })
-  id: string;
+  id: string = uuidV4();
 
   @Column({
     type: DataType.STRING(60),

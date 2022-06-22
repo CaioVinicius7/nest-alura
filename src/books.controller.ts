@@ -13,31 +13,31 @@ import { BooksService } from "./books.service";
 
 @Controller("books")
 class BooksController {
-  constructor(private productsService: BooksService) {}
+  constructor(private booksService: BooksService) {}
 
   @Get()
-  getAll(): Book[] {
-    return this.productsService.getAll();
+  async getAll(): Promise<Book[]> {
+    return this.booksService.getAll();
   }
 
   @Get(":id")
-  getOne(@Param() params): Book {
-    return this.productsService.getOne(params.id);
+  async getOne(@Param() params): Promise<Book> {
+    return this.booksService.getOne(params.id);
   }
 
   @Post()
-  create(@Body() product: Book): void {
-    this.productsService.create(product);
+  async create(@Body() book: Book): Promise<void> {
+    this.booksService.create(book);
   }
 
   @Patch(":id")
-  update(@Param() params, @Body() product: Book): Book {
-    return this.productsService.update(params.id, product);
+  async update(@Param() params, @Body() book: Book): Promise<[number, Book[]]> {
+    return this.booksService.update(params.id, book);
   }
 
   @Delete(":id")
-  delete(@Param() params): void {
-    this.productsService.delete(params.id);
+  async delete(@Param() params): Promise<void> {
+    this.booksService.delete(params.id);
   }
 }
 
